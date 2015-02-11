@@ -19,4 +19,6 @@
 
     public function setGenre($new_genre);
 
+    public function getBaseSong();
+
   }
