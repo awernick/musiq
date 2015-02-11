@@ -77,6 +77,6 @@ class BaseSong implements Song
 
     public function getBaseSong()
     {
-
+      return new self($title, $artist, $duration, $genre, $plays);
     }
 }
