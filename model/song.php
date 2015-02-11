@@ -1,77 +1,22 @@
-<?php
+<? php
 
-namespace model;
+  interface Song
+  {
 
-class Song
-{
-    private $title;
-    private $artist;
-    private $duration;
-    private $genre;
-    private $plays;
+    public function getTitle();
 
+    public function getArtist();
 
-    protected function __construct($song_title = "", $song_artist = "", $song_duration = 0, $song_genre = "", $song_plays = 0)
-    {
-        $this->title = $song_title;
-        $this->artist = $artist;
-        $this->duration = $song_duration;
-        $this->genre = $song_genre;
-        $this->plays = $song_plays;
-    }
+    public function getDuration();
 
+    public function getGenre();
 
-    protected played()
-    {
-      $song_plays++;
-    }
+    public function setTitle($new_title);
 
-    public function getTitle()
-    {
-      return $this->title;
-    }
+    public function setArtist($new_artist);
 
-    public function getArtist()
-    {
-      return $this->artist;
-    }
+    public function setDuration($new_duration);
 
-    public function getDuration()
-    {
-      return gmdate('i:s', $this->duration);
-    }
+    public function setGenre($new_genre);
 
-    public function getGenre()
-    {
-      return $this->genre;
-    }
-
-    public function setTitle($new_title)
-    {
-      if(is_string($new_title))
-        $this->title = $new_title;
-    }
-
-    public function setArtist($new_artist)
-    {
-      if(is_string($new_artist))
-        $this->artist = $new_artist;
-    }
-
-    public function setDuration($new_duration)
-    {
-      if(is_int($new_duration) and $new_duration > 0)
-        $this->duration = $new_duration;
-    }
-
-    public function setGenre($new_genre)
-    {
-      if(is_string($new_genre))
-        $this->genre = $new_genre;
-    }
-
-    public getNumberOfPlays()
-    {
-      return $this->plays;
-    }
-}
+  }
