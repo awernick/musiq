@@ -1,18 +1,18 @@
 <?php
 
-  class DownloadableSong extends SongDecorator
+  class Model_DownloadableSong extends Model_SongDecorator
   {
     private $price;
 
-    public function __constructor(Song $song, $price)
+    public function __construct(Model_Song $song_in, $price_in = 0)
     {
-      parent::_construct($song);
-      setPrice($price);
+      parent::__construct($song_in);
+      $this->price = $price_in;
     }
-    
+
     public function getPrice()
     {
-      return $price;
+      return $this->price;
     }
 
     /**

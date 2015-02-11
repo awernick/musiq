@@ -1,11 +1,11 @@
 <?php
 
-  abstract class SongDecorator implements Song
+  abstract class Model_SongDecorator implements Model_Song
   {
 
-    protected $song;
+    private $song;
 
-    public function __constructor(Song $song_in)
+    public function __construct(Model_Song $song_in)
     {
       $this->song = $song_in;
     }
@@ -54,5 +54,5 @@
     {
       return $this->song->getBaseSong();
     }
-    
+
   }

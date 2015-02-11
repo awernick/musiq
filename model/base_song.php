@@ -1,8 +1,6 @@
 <?php
 
-namespace model;
-
-class BaseSong implements Song
+class Model_BaseSong implements Model_Song
 {
     private $title;
     private $artist;
@@ -11,10 +9,10 @@ class BaseSong implements Song
     private $plays;
 
 
-    protected function __construct($song_title = "", $song_artist = "", $song_duration = 0, $song_genre = "", $song_plays = 0)
+    public function __construct($song_title = "", $song_artist = "", $song_duration = 0, $song_genre = "", $song_plays = 0)
     {
         $this->title = $song_title;
-        $this->artist = $artist;
+        $this->artist = $song_artist;
         $this->duration = $song_duration;
         $this->genre = $song_genre;
         $this->plays = $song_plays;
