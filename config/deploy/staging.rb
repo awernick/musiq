@@ -13,6 +13,7 @@ server 'napkin-studio.com', user: 'deployer', roles: %w{web}
 
 set :deploy_to, "/usr/share/nginx/html/cs3360_project/"
 set :stage, :staging
+set :branch, "song-model"
 
 # SSH Options
 # See the example commented out section in the file

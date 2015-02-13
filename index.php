@@ -30,10 +30,27 @@
 
   spl_autoload_register('autload');
 
-  $song = new Model_AlanTunesDownloadableSong(new Model_DownloadableSong(new Model_BaseSong("Hello","Goodybyte","Rock/Indie", "The Beatles"), 99));
+  $song_library = new Model_DownloadableSongLibrary(new Model_LocalSongLibrary());
+
+  $song = new Model_DownloadableSong($song_library, new Model_BaseSong("Hello","Goodybyte","Rock/Indie", "The Beatles"), 99);
 
   echo $song->getTitle();
 
   if($song instanceof Model_DownloadableSong)
     echo $song->getPrice();
+
+  echo "Array Start"."<br />";
+  $array[] = $song;
+
+  //var_dump($array);
+
+  //$song_library = new Model_DownloadableSongLibrary(new Model_LocalSongLibrary($array));
+
+  $song = new Model_BaseSong("Hello","Goodybyte","Rock/Indie", "The Beatles");
+
+  $song_library->addSong($song);
+
+  //var_dump($song_library);
+
+  $song_library->listSongs();
 ?>

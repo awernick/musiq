@@ -4,7 +4,6 @@ lock '3.3.5'
 set :application, 'musiq_store'
 set :repo_url, 'git@github.com:awernick/musiq.git'
 
-
 set :pty, true
 set :format, :pretty
 
