@@ -53,4 +53,6 @@
   //var_dump($song_library);
 
   $song_library->listSongs();
+
+  header('Location: /view/song_store_view.php');
 ?>
