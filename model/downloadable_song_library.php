@@ -15,10 +15,10 @@ class Model_DownloadableSongLibrary extends Model_SongLibraryDecorator
         if (!($song instanceof Model_DownloadableSong)) {
             $song = new Model_DownloadableSong($this, $song);
         }
-        else
-        {
-          this
-        }
+        // else
+        // {
+        //   this
+        // }
         $song->setPrice(3);
     }
 

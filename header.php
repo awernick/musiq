@@ -2,18 +2,28 @@
 
   function include_style_sheet_assets()
   {
-    foreach(scandir('../assets/stylesheets') as $stylesheet)
+    $dir = '../assets/stylesheets';
+
+    foreach(scandir($dir) as $stylesheet)
     {
-      echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$stylesheet}\"/>";
+      echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$dir}/{$stylesheet}\"/>";
     }
   }
 
   function include_javascript_assets()
   {
+    $dir = '../assets/scripts';
+
     foreach(scandir('../assets/scripts') as $script)
     {
-      echo "<script src=\"{$script}\"></script>";
+      echo "<script src=\"{$dir}/{$script}\"></script>";
     }
+  }
+
+  function provide_title($title_in = "")
+  {
+    global $title;
+    $title = $title_in;
   }
 
   include_style_sheet_assets();
@@ -23,6 +33,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.2/slate/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
 
@@ -38,10 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
-            <img alt="Musiq Logo" src="/assets/images/musiq_logo.png">
-            Musiq
-          </a>
+          <a class="navbar-brand" href="#"><span>Musiq</span><img alt="Musiq Logo" src="/assets/images/musiq_logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,13 +79,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Link</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Purchased</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a href="#">Sign Out</a></li>
               </ul>
             </li>
           </ul>
@@ -85,4 +92,3 @@
       </div><!-- /.container-fluid -->
     </nav>
   </body>
-</html>

@@ -1,0 +1,11 @@
+.navbar-brand img {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-top: 0px;
+  margin-left: 7px;
+}
+
+.navbar-brand span {
+  float: left;
+}
