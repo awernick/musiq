@@ -17,7 +17,6 @@ function __autoload($class_name) {
 
    $filename = from_camel_case($class_name) . '.php';
    $file = __SITE_PATH . '/model/' . $filename;
-   var_dump($file);
    if (file_exists($file) == false)
    {
        return false;
@@ -32,6 +31,11 @@ function from_camel_case($input) {
     $match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
   }
   return implode('_', $ret);
+}
+
+
+function from_snake_case($val) {  
+return str_replace(' ', '', ucwords(str_replace('_', ' ', $val)));
 }
 
 /*** a new registry object ***/

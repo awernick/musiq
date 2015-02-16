@@ -1,10 +1,11 @@
 <?php
 
-class indexController extends Controller {
+class SongLibraryController extends Controller
+{
 
   public function index()
   {
-    $song = new BaseSong("Hello","Goodybyte", 99, "Rock/Indie", "The Beatles");
+    $song = new BaseSong("Hello", "Goodybyte", "The Beatles", 99, "Rock/Indie" );
     $song_array = array($song);
 
     $song_library = new LocalSongLibrary($song_array);
@@ -13,4 +14,10 @@ class indexController extends Controller {
 
     $this->registry->template->show('index');
   }
+
+  public function show()
+  {
+    $this->registry->template->show('show');
+  }
+
 }

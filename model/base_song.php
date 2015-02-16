@@ -3,19 +3,21 @@
 class BaseSong implements Song
 {
     private $title;
+    private $album;
     private $artist;
     private $duration;
     private $genre;
     private $plays;
 
 
-    public function __construct($song_title = "", $song_artist = "", $song_duration = 0, $song_genre = "", $song_plays = 0)
+    public function __construct($title = "", $album = "", $artist = "", $duration = 0, $genre = "", $plays = 0)
     {
-        $this->title = $song_title;
-        $this->artist = $song_artist;
-        $this->duration = $song_duration;
-        $this->genre = $song_genre;
-        $this->plays = $song_plays;
+        $this->title = $title;
+        $this->album = $album;
+        $this->artist = $artist;
+        $this->duration = $duration;
+        $this->genre = $genre;
+        $this->plays = $plays;
     }
 
 
@@ -34,6 +36,11 @@ class BaseSong implements Song
       return $this->artist;
     }
 
+    public function getAlbum()
+    {
+      return $this->album;
+    }
+
     public function getDuration()
     {
       return gmdate('i:s', $this->duration);
@@ -48,6 +55,12 @@ class BaseSong implements Song
     {
       if(is_string($new_title))
         $this->title = $new_title;
+    }
+
+    public function setAlbum($album)
+    {
+      if(is_string($album))
+        $this->album = $album;
     }
 
     public function setArtist($new_artist)

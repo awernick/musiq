@@ -5,6 +5,8 @@
 
     public function getTitle();
 
+    public function getAlbum();
+
     public function getArtist();
 
     public function getDuration();

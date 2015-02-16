@@ -35,6 +35,7 @@ class Router
 
     $this->loadController();
 
+
     if(is_readable($this->file) == false)
     {
       $this->file = $this->path.'/error404.php';
@@ -42,7 +43,8 @@ class Router
     }
 
     include $this->file;
-
+    $this->registry->controller = $this->controller;
+    $this->controller = from_snake_case($this->controller);
     $class = $this->controller.'Controller';
     $controller = new $class($this->registry);
 
@@ -64,12 +66,11 @@ class Router
   public function loadController()
   {
     /* Set controller specified, route to index otherwise */
-    $this->controller = empty( $_GET['controller'] ) ? 'index' : $_GET['controller'];
+    $this->controller =  empty($_GET['controller']) ? 'index' : $_GET['controller'];
 
     /* Call action specified, else call index action */
     $this->action = empty( $_GET['action'] ) ? 'index' : $_GET['action'];
 
-
-    $this->file = $this->path.'/'.$this->controller.'Controller.php';
+    $this->file = $this->path.'/'.$this->controller.'_controller.php';
   }
 }

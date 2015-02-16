@@ -3,7 +3,7 @@
 class Template {
 
   private $vars = array();
-
+  private $registry;
 
   public function __construct($registry)
   {
@@ -17,7 +17,16 @@ class Template {
 
   public function show($name)
   {
-    $path = __SITE_PATH . '/view'.'/'.$name.'.php';
+    $controller = $this->registry->controller . '/';
+
+    if($controller == 'error404/' || $controller == 'index/')
+    {
+      $controller = '';
+    }
+
+
+    $path = __SITE_PATH . '/view'.'/'.$controller.$name.'.php';
+
 
     if(file_exists($path) == false)
     {
