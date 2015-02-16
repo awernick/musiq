@@ -1,6 +1,6 @@
 <?php
 
-class Model_SongStore
+class SongStore
 {
 
   $song_library;

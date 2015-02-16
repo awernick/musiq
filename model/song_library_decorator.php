@@ -1,13 +1,13 @@
 <?php
 
-  abstract class Model_SongLibraryDecorator implements Model_SongLibrary
+  abstract class SongLibraryDecorator implements SongLibrary
   {
-    public function hasSong(Model_Song $song)
+    public function hasSong(Song $song)
     {
 
     }
 
-    public function getSong(Model_Song $song)
+    public function getSong(Song $song)
     {
 
     }
@@ -17,7 +17,7 @@
 
     }
 
-    public function addSong(Model_Song $song)
+    public function addSong(Song $song)
     {
 
     }
@@ -29,7 +29,7 @@
 
     public function getSongLocation()
     {
-      
+
     }
 
   }

@@ -1,13 +1,13 @@
 <?php
 
-class Model_LocalSongLibrary implements Model_SongLibrary
+class LocalSongLibrary implements SongLibrary
 {
-    private $songArray;
+    private $song_array;
 
-    public function __construct($songArrayIn = array())
+    public function __construct($song_array = array())
     {
-        $this->songArray = array_filter($songArrayIn, function($song) {
-            return $song instanceof Model_Song;
+        $this->song_array = array_filter($song_array, function($song) {
+            return $song instanceof Song;
         });
     }
 
@@ -18,7 +18,7 @@ class Model_LocalSongLibrary implements Model_SongLibrary
         }
     }
 
-    public function addSong(Model_Song $song)
+    public function addSong(Song $song)
     {
         $this->song_array[] = $song;
     }
@@ -33,12 +33,17 @@ class Model_LocalSongLibrary implements Model_SongLibrary
 
     }
 
-    public function hasSong(Model_Song $song)
+    public function hasSong(Song $song)
     {
 
     }
 
-    public function getSong(Model_Song $song)
+    public function getAllSongs()
+    {
+      return $this->song_array;
+    }
+
+    public function getSong(Song $song)
     {
 
     }

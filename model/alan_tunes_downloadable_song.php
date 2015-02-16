@@ -1,11 +1,11 @@
 <?php
 
-  class Model_AlanTunesDownloadableSong extends Model_DownloadableSong
+  class AlanTunesDownloadableSong extends DownloadableSong
   {
     private $location;
 
 
-    public function __construct(Model_DownloadableSong $song, $new_location= "\\")
+    public function __construct(DownloadableSong $song, $new_location= "\\")
     {
       parent::__construct($song);
       self::setLocation($new_location);

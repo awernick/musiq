@@ -1,11 +1,11 @@
 <?php
 
-class Model_DownloadableSong extends Model_SongDecorator
+class DownloadableSong extends SongDecorator
 {
   private $price;
   private $library;
 
-  public function __construct(Model_DownloadableSongLibrary $libraryIn, Model_Song $songIn, $priceIn = 0)
+  public function __construct(DownloadableSongLibrary $libraryIn, Song $songIn, $priceIn = 0)
   {
       parent::__construct($songIn);
 

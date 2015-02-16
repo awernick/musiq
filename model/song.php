@@ -1,6 +1,6 @@
 <?php
 
-  interface Model_Song
+  interface Song
   {
 
     public function getTitle();

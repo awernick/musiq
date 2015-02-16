@@ -1,15 +1,17 @@
 <?php
 
-  interface Model_SongLibrary
+  interface SongLibrary
   {
 
-    public function hasSong(Model_Song $song);
+    public function getAllSongs();
 
-    public function getSong(Model_Song $song);
+    public function hasSong(Song $song);
+
+    public function getSong(Song $song);
 
     public function listSongs();
 
-    public function addSong(Model_Song $song);
+    public function addSong(Song $song);
 
     public function deleteSong();
 

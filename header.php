@@ -2,7 +2,7 @@
 
   function include_style_sheet_assets()
   {
-    $dir = '../assets/stylesheets';
+    $dir = 'assets/stylesheets';
 
     foreach(scandir($dir) as $stylesheet)
     {
@@ -12,9 +12,9 @@
 
   function include_javascript_assets()
   {
-    $dir = '../assets/scripts';
+    $dir = 'assets/scripts';
 
-    foreach(scandir('../assets/scripts') as $script)
+    foreach(scandir('assets/scripts') as $script)
     {
       echo "<script src=\"{$dir}/{$script}\"></script>";
     }

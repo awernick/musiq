@@ -1,10 +1,10 @@
 <?php
 
-class LocalSongLibraryController
+class Controller_LocalSongLibraryController
 {
 
   $song_library;
-  
+
   function __construct($song_library_in = "")
   {
     if($song_library_in != null)
@@ -16,12 +16,12 @@ class LocalSongLibraryController
 
   function index()
   {
-    $songs =
+    return $this->song_library.getAllSongs();
   }
 
   function show()
   {
-    $song
+
   }
 
   function edit()

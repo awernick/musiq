@@ -1,6 +1,6 @@
 <?php
 
-class Model_BaseSong implements Model_Song
+class BaseSong implements Song
 {
     private $title;
     private $artist;
