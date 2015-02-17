@@ -14,7 +14,7 @@
 
   $registry->template = new Template($registry);
 
-  include('header.php');
+  //include('header.php');
 
   $registry->router->loader();
 
