@@ -9,15 +9,17 @@ class BaseSong implements Song
     private $duration;
     private $genre;
     private $plays;
+    private $annotation;
 
 
-    public function __construct($title = "", $album = "", $artist = "", $duration = 0, $genre = "", $plays = 0)
+    public function __construct($title = "", $album = "", $artist = "", $duration = 0, $genre = "", $annotation = "", $plays = 0)
     {
         $this->title = $title;
         $this->album = $album;
         $this->artist = $artist;
         $this->duration = $duration;
         $this->genre = $genre;
+        $this->annotation = $annotation;
         $this->plays = $plays;
     }
 
@@ -52,6 +54,12 @@ class BaseSong implements Song
       return gmdate('i:s', $this->duration);
     }
 
+    public function getAnnotation()
+    {
+      return $this->annotation;
+    }
+
+
     public function getGenre()
     {
       return $this->genre;
@@ -84,6 +92,11 @@ class BaseSong implements Song
     {
       if(is_int($new_duration) and $new_duration > 0)
         $this->duration = $new_duration;
+    }
+
+    public function setAnnotation($annotation)
+    {
+        $this->annotation = $annotation;
     }
 
     public function setGenre($new_genre)

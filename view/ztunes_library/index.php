@@ -23,7 +23,7 @@
             <input type="hidden" id="action" name="action" value="show" >
             <input type="hidden" name="id" value="<?= $song->getID() ?>" >
           </form>
-          <form id="form<?= $song->getID() ?>Download" method="post" action="index.php?controller=zmazon_library&action=download">
+          <form id="form<?= $song->getID() ?>Download" method="post" action="index.php?controller=ztunes_library&action=download">
             <input type="hidden" name="id" value="<?= $song->getID() ?>" >
           </form>
             <tr>
@@ -34,8 +34,8 @@
               <td> <?= $song->getGenre() ?></td>
               <td> <?= $song->getNumberOfPlays() ?></td>
               <td>
-                <a onclick="$('#form<?= $song->getID() ?>').submit()"><i class="fa fa-pencil-square-o"></i></a>
-                <i onclick="$('#form<?= $song->getID() ?>Download').submit()" class="fa fa-download"></i>
+                <a onclick="$('#form<?= $song->getID() ?>').submit()"><i class="fa fa-pencil-square-o"></i> edit</a>&nbsp;&nbsp;
+                <a onclick="$('#form<?= $song->getID() ?>Download').submit()"><i  class="fa fa-download"></i> download</a>
               </td>
             </tr>
           </a>

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ *  Controller that handles Session creation
+ *  and destruction.
+ **/
 class SessionController extends Controller {
 
   public function index()
@@ -7,6 +11,7 @@ class SessionController extends Controller {
     $this->registry->template->show('login');
   }
 
+  /** Process POST session creation request for the given username */
   public function create()
   {
     $username = $_POST['username'];
@@ -15,6 +20,7 @@ class SessionController extends Controller {
     $this->redirect('song_library','index');
   }
 
+  /** Destroy session for the current user */
   public function destroy()
   {
     $_SESSION['username'] = null;

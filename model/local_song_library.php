@@ -15,12 +15,12 @@ class LocalSongLibrary implements SongLibrary
 
     public static function loadFromFile($file_path = '')
     {
-      var_dump($_SESSION['username']);
+      //var_dump($_SESSION['username']);
 
       if($file_path == '')
         $file_path = __SITE_PATH.'/assets/library/'.from_camel_case(get_called_class()).'.txt';
 
-      echo "filepath: ".$file_path;
+      //echo "filepath: ".$file_path;
       $file = fopen($file_path, "r+");
       $song_library = unserialize(fread($file, filesize($file_path)));
       fclose($file);
