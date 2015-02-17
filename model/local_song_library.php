@@ -17,7 +17,7 @@ class LocalSongLibrary implements SongLibrary
       if($file_path == '')
         $file_path = __SITE_PATH.'/assets/library/'.from_camel_case(get_called_class()).'.txt';
 
-
+      echo "filepath: ".$file_path;
       $file = fopen($file_path, "r+");
       $song_library = unserialize(fread($file, filesize($file_path)));
       fclose($file);
@@ -160,6 +160,7 @@ class LocalSongLibrary implements SongLibrary
       if(empty($this->file))
         return false;
 
+      echo "filepath: ".$file;
       $file = fopen($this->file, 'w+');
       fwrite($file, serialize($this));
       fclose($file);
