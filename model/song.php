@@ -1,22 +1,26 @@
 <?php
 
-namespace model;
+  interface Song
+  {
 
-class Song
-{
-    private $title;
-    private $artist;
-    private $duration;
-    private $genre;
-    private $plays;
+    public function getTitle();
 
+    public function getAlbum();
 
-    protected function __construct($song_title = "", $song_artist = "", $song_duration = 0, $song_genre = "", $song_plays = 0)
-    {
-        $this->title = $song_title;
-        $this->artist = $artist;
-        $this->duration = $song_duration;
-        $this->genre = $song_genre;
-        $this->plays = $song_plays;
-    }
-}
+    public function getArtist();
+
+    public function getDuration();
+
+    public function getGenre();
+
+    public function setTitle($new_title);
+
+    public function setArtist($new_artist);
+
+    public function setDuration($new_duration);
+
+    public function setGenre($new_genre);
+
+    public function getBaseSong();
+
+  }
