@@ -61,8 +61,6 @@ class Router
     include $this->file;
 
 
-    var_dump($this->controller);
-
     /* Set the controller as the current controller */
     $this->registry->controller = $this->controller;
 

@@ -38,7 +38,6 @@ function from_snake_case($val) {
   return str_replace(' ', '', ucwords(str_replace('_', ' ', $val)));
 }
 
-
 session_name('Private');
 session_start();
 

@@ -8,13 +8,21 @@ class SongLibraryController extends Controller
   {
       parent::__construct($registry);
 
+      $username = $_SESSION['username'];
+
+      if(isset($username) == false)
+      {
+        $this->redirect('session', 'index');
+        return;
+      }
+
       if(isset($_SESSION['local_library']))
         $this->song_library = $_SESSION['local_library'];
 
-
       else
       {
-        $this->song_library = LocalSongLibrary::loadFromFile();
+        $path = __SITE_PATH.'/assets/library/'.from_camel_case(get_called_class()).'-'.$username.'.txt';
+        $this->song_library = LocalSongLibrary::loadFromFile($path);
         $_SESSION['local_library'] = $this->song_library;
       }
   }

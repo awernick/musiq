@@ -50,8 +50,8 @@ class Template {
     $path = __SITE_PATH . '/view'.'/'.$controller.$name.'.php';
 
     include(__SITE_PATH . '/view'.'/'.$controller.'header.php');
-    
-    var_dump($path);
+
+    // var_dump($path);
     /* Check that the class exists, throw Error otherwise */
     if(file_exists($path) == false)
     {

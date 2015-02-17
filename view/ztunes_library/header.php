@@ -32,7 +32,7 @@
 
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.2/slate/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/darkly/bootstrap.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -50,23 +50,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php"><span>Musiq</span><img alt="Musiq Logo" src="assets/images/musiq_logo.png"></a>
+          <a class="navbar-brand" href="index.php"><span>ZTunes</span></a>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li ><a href="index.php?controller=zmazon_library">Zmazon <span class="sr-only">(current)</span></a></li>
-            <li><a href="index.php?controller=ztunes_library">ZTunes</a></li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
+              <?php if(isset($_SESSION['username'])) :?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $_SESSION['username'] ?> <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="index.php">Library</a></li>
-                <li><a href="index.php?controller=song_library&action=playlist">Playlist</a></li>
-                <li class="divider"></li>
-                <li><a href="index?controller=session&action=destroy">Sign Out</a></li>
+                  <li><a href="index.php?">Profile</a></li>
+                  <li class="divider"></li>
+                  <li><a href="index.php?controller=session&action=destroy">Sign Out</a></li>
+                <?php else : ?>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Guest <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  <li><a href="index.php?">Sign In</a></li>
+                <?php endif; ?>
               </ul>
             </li>
           </ul>
