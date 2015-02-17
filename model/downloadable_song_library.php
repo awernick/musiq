@@ -4,7 +4,6 @@ class DownloadableSongLibrary extends SongLibraryDecorator
 {
     private $song_library;
 
-
     public function __construct(SongLibrary $song_library_in)
     {
         $this->song_library = $song_library_in;
@@ -15,8 +14,6 @@ class DownloadableSongLibrary extends SongLibraryDecorator
         if (!($song instanceof DownloadableSong)) {
             $song = new DownloadableSong($this, $song);
         }
-
-        $song->setPrice(3);
     }
 
     public function getSong(Song $song)

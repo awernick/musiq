@@ -18,7 +18,6 @@
 
   $registry->router->loader();
 
-
   // echo "Hello!";
   //
   // function autload($class) {

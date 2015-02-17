@@ -34,9 +34,20 @@ function from_camel_case($input) {
 }
 
 
-function from_snake_case($val) {  
-return str_replace(' ', '', ucwords(str_replace('_', ' ', $val)));
+function from_snake_case($val) {
+  return str_replace(' ', '', ucwords(str_replace('_', ' ', $val)));
 }
 
-/*** a new registry object ***/
-$registry = new registry;
+if(empty($_SESSION['registry']))
+{
+  /*** a new registry object ***/
+  $registry = new registry;
+  session_start();
+  $_SESSION['registry'] = $registry;
+  echo "new session";
+}
+else
+{
+  echo "old session";
+  $registry = $_SESSION['registry'];
+}
