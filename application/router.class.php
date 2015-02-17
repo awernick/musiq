@@ -62,7 +62,7 @@ class Router
 
 
     var_dump($this->controller);
-    
+
     /* Set the controller as the current controller */
     $this->registry->controller = $this->controller;
 
@@ -72,6 +72,7 @@ class Router
     /* Fetch or instantiate controller class if it has been already */
     if(empty($this->registry->$controller_name))
     {
+
       $class = $controller_name.'Controller';
 
       /* Instantiate controller */

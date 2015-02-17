@@ -4,11 +4,34 @@ class LocalSongLibrary implements SongLibrary
 {
     private $song_array;
     private $song_index;
+    private $file;
 
     public function __construct()
     {
         $this->song_array = array();
         $this->song_index = 0;
+    }
+
+    public static function loadFromFile($file_path = '')
+    {
+      if($file_path == '')
+        $file_path = __SITE_PATH.'/assets/library/'.from_camel_case(get_called_class()).'.txt';
+
+      $file = fopen($file_path, "w+");
+      $song_library = unserialize(fread($file, filesize($file_path)));
+
+      if($song_library == false)
+        $song_library = new static();
+
+      echo "<br /> FilePath: ".$file_path;
+
+      $song_library->setFile($file_path);
+      return $song_library;
+    }
+
+    public function setFile($file)
+    {
+      $this->file = $file;
     }
 
     public function listSongs()
@@ -26,7 +49,7 @@ class LocalSongLibrary implements SongLibrary
 
     public function deleteSong($id)
     {
-      if(hasSong($id))
+      if($this->hasSong($id))
         unset($this->song_array[$id]);
 
       else
@@ -59,7 +82,7 @@ class LocalSongLibrary implements SongLibrary
      */
     public function findById($id)
     {
-      $this->find("id", $id);
+      return $this->find("id", $id);
     }
 
     /**
@@ -68,7 +91,7 @@ class LocalSongLibrary implements SongLibrary
      */
     public function findByTitle($title)
     {
-      $this->find("title", $title);
+      return $this->find("title", $title);
     }
 
     /**
@@ -77,7 +100,7 @@ class LocalSongLibrary implements SongLibrary
      */
     public function findByArtist($artist)
     {
-      $this->find("artist", $artist);
+      return $this->find("artist", $artist);
     }
 
     /**
@@ -85,7 +108,7 @@ class LocalSongLibrary implements SongLibrary
      */
     public function findByGenre($genre)
     {
-      $this->find("genre", $genre);
+      return $this->find("genre", $genre);
     }
 
     /**
@@ -93,7 +116,7 @@ class LocalSongLibrary implements SongLibrary
      */
     public function findByAlbum($album)
     {
-      $this->find("album", $album);
+      return $this->find("album", $album);
     }
 
     public function getAllSongs()
@@ -103,6 +126,41 @@ class LocalSongLibrary implements SongLibrary
 
     public function getSong($id)
     {
-      return isset($song_array[$id]) ? $song_array[$id] : false;
+      return isset($this->song_array[$id]) ? $this->song_array[$id] : false;
+    }
+
+    public function updateSong($song_id, $song_attrs)
+    {
+      $song = $this->getSong($song_id);
+
+      if($song == false)
+        return;
+      else
+
+      foreach($song_attrs as $attribute => $value)
+      {
+        $method = 'set'.ucwords($attribute);
+
+        if(is_callable(array($song, $method)) == false)
+        {
+          echo "can't call";
+          continue;
+        }
+        else
+          $song->$method($value);
+      }
+
+      $this->song_array[$song_id] = $song;
+
+    }
+
+    public function update()
+    {
+      if(empty($this->file))
+        return false;
+
+      echo "<br /> File:".$this->file;
+      $file = fopen($this->file, 'w+');
+      fwrite($file, serialize($this));
     }
 }

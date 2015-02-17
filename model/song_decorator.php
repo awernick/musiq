@@ -3,7 +3,7 @@
   abstract class SongDecorator implements Song
   {
 
-    private $song;
+    protected $song;
 
     public function __construct(Song $song_in)
     {
