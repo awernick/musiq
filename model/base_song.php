@@ -2,6 +2,7 @@
 
 class BaseSong implements Song
 {
+    private $id;
     private $title;
     private $album;
     private $artist;
@@ -24,6 +25,11 @@ class BaseSong implements Song
     protected function played()
     {
       $song_plays++;
+    }
+
+    public function getID()
+    {
+      return $this->id;
     }
 
     public function getTitle()
@@ -49,6 +55,11 @@ class BaseSong implements Song
     public function getGenre()
     {
       return $this->genre;
+    }
+
+    public function setID($id)
+    {
+        $this->id = $id;
     }
 
     public function setTitle($new_title)

@@ -14,7 +14,6 @@ class SongLibraryController extends Controller
 
       else
       {
-        $this->song_library = new LocalSongLibrary();
         $this->song_library = LocalSongLibrary::loadFromFile();
         $_SESSION['local_library'] = $this->song_library;
       }
@@ -22,6 +21,8 @@ class SongLibraryController extends Controller
 
   public function index()
   {
+    // $song = new BaseSong("Hello","Revolver", "The Beatles", 99, "Rock/Indie");
+    // $this->song_library->addSong($song);
     $this->registry->template->songs = $this->song_library->getAllSongs();
     $this->registry->template->show('index');
   }

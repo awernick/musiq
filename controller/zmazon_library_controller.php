@@ -23,6 +23,8 @@ class ZmazonLibraryController extends Controller {
 
     public function index()
     {
+      // $song = new BaseSong("Hello","Revolver", "The Beatles", 99, "Rock/Indie");
+      // $this->song_library->addSong($song);
       $this->registry->template->songs = $this->song_library->getAllSongs();
       $this->registry->template->show('index');
     }
@@ -47,7 +49,7 @@ class ZmazonLibraryController extends Controller {
       $song_id = empty($_POST['id']) ? -1 : $_POST['id'];
       $song_attrs = empty($_POST['song_attrs']) ? array() : $_POST['song_attrs'];
       $this->song_library->updateSong($song_id, $song_attrs);
-      //$this->redirect($this->registry->controller,'index');
+      $this->redirect($this->registry->controller,'index');
     }
 
     public function __destruct()

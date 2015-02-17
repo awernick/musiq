@@ -17,13 +17,13 @@ class LocalSongLibrary implements SongLibrary
       if($file_path == '')
         $file_path = __SITE_PATH.'/assets/library/'.from_camel_case(get_called_class()).'.txt';
 
-      $file = fopen($file_path, "w+");
+
+      $file = fopen($file_path, "r+");
       $song_library = unserialize(fread($file, filesize($file_path)));
+      fclose($file);
 
       if($song_library == false)
         $song_library = new static();
-
-      echo "<br /> FilePath: ".$file_path;
 
       $song_library->setFile($file_path);
       return $song_library;
@@ -44,6 +44,7 @@ class LocalSongLibrary implements SongLibrary
     public function addSong(Song $song)
     {
         $this->song_index++;
+        $song->setID($this->song_index);
         $this->song_array[$this->song_index] = $song;
     }
 
@@ -159,8 +160,8 @@ class LocalSongLibrary implements SongLibrary
       if(empty($this->file))
         return false;
 
-      echo "<br /> File:".$this->file;
       $file = fopen($this->file, 'w+');
       fwrite($file, serialize($this));
+      fclose($file);
     }
 }

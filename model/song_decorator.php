@@ -10,6 +10,11 @@
       $this->song = $song_in;
     }
 
+    public function getID()
+    {
+      return $this->song->getID();
+    }
+
     public function getTitle()
     {
       return $this->song->getTitle();
@@ -28,6 +33,11 @@
     public function getGenre()
     {
       return $this->song->getGenre();
+    }
+
+    public function setID($id)
+    {
+      $this->song->setID($id);
     }
 
     public function setTitle($new_title)

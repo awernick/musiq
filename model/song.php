@@ -2,6 +2,7 @@
 
   interface Song
   {
+    public function getID();
 
     public function getTitle();
 
@@ -12,6 +13,8 @@
     public function getDuration();
 
     public function getGenre();
+
+    public function setID($id);
 
     public function setTitle($new_title);
 

@@ -14,18 +14,21 @@
         </tr>
       </thead>
       <tbody>
-        <form id="form" method="get" action="index.php">
-          <input type="hidden" name="controller" value="index" />
-        </form>
       <?php if(count($songs) != 0) : ?>
         <?php foreach ($songs as $song) : ?>
+          <form id="form<?= $song->getID() ?>" method="get" action="index.php">
+            <input type="hidden" name="controller" value="<?= $this->registry->controller ?>" >
+            <input type="hidden" name="action" value="show" >
+            <input type="hidden" name="id" value="<?= $song->getID() ?>" >
+          </form>
             <tr>
-              <td class="song"> <?= $song->getTitle() ?> </a></td>
-              <td> <?= $song->getArtist() ?></a></td>
-              <td> <?= $song->getAlbum() ?></a></td>
+              <td> <?= $song->getTitle() ?> </td>
+              <td> <?= $song->getArtist() ?></td>
+              <td> <?= $song->getAlbum() ?></td>
               <td> <?= $song->getDuration() ?></td>
               <td> <?= $song->getGenre() ?></td>
               <td> <?= $song->getNumberOfPlays() ?></td>
+              <td> <a onclick="$('#form<?= $song->getID() ?>').submit()"> view </a> </td>
             </tr>
           </a>
         <?php endforeach; ?>
@@ -35,22 +38,5 @@
   </body>
 
   <script>
-    $("tr").click(function(){
-      $('<input>').attr({
-          type: 'hidden',
-          id: 'action',
-          name: 'action',
-          value: 'show'
-        }).appendTo('#form');
-
-        $('<input>').attr({
-            type: 'hidden',
-            id: 'song',
-            name: 'song',
-            value: $(this).children('.song').text()
-          }).appendTo('#form');
-
-        $('#form').submit();
-      });
   </script>
 </html>
