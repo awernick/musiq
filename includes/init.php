@@ -38,16 +38,9 @@ function from_snake_case($val) {
   return str_replace(' ', '', ucwords(str_replace('_', ' ', $val)));
 }
 
-if(empty($_SESSION['registry']))
-{
-  /*** a new registry object ***/
-  $registry = new registry;
-  session_start();
-  $_SESSION['registry'] = $registry;
-  echo "new session";
-}
-else
-{
-  echo "old session";
-  $registry = $_SESSION['registry'];
-}
+
+session_name('Private');
+session_start();
+
+/*** a new registry object ***/
+$registry = new registry;

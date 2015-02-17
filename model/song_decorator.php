@@ -3,11 +3,16 @@
   abstract class SongDecorator implements Song
   {
 
-    private $song;
+    protected $song;
 
     public function __construct(Song $song_in)
     {
       $this->song = $song_in;
+    }
+
+    public function getID()
+    {
+      return $this->song->getID();
     }
 
     public function getTitle()
@@ -28,6 +33,11 @@
     public function getGenre()
     {
       return $this->song->getGenre();
+    }
+
+    public function setID($id)
+    {
+      $this->song->setID($id);
     }
 
     public function setTitle($new_title)
