@@ -1,6 +1,6 @@
 <?php
 
-class ZmazonLibraryController extends Controller {
+class ZtunesLibraryController extends Controller {
 
     private $song_library;
 
@@ -10,13 +10,13 @@ class ZmazonLibraryController extends Controller {
 
         $file_path = __SITE_PATH.'/assets/library/'.from_camel_case(get_class($this)).'.txt';
 
-        if(isset($_SESSION['zmazon_library']))
-          $this->song_library = $_SESSION['zmazon_library'];
+        if(isset($_SESSION['ztunes_library']))
+          $this->song_library = $_SESSION['ztunes_library'];
 
         else
         {
-          $this->song_library = new ZmazonSongLibrary(LocalSongLibrary::loadFromFile($file_path));
-          $_SESSION['zmazon_library'] = $this->song_library;
+          $this->song_library = new ZtunesSongLibrary(LocalSongLibrary::loadFromFile($file_path));
+          $_SESSION['ztunes_library'] = $this->song_library;
         }
 
     }

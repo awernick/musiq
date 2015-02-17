@@ -5,6 +5,7 @@ class LocalSongLibrary implements SongLibrary
     private $song_array;
     private $song_index;
     private $file;
+    private $playlists;
 
     public function __construct()
     {
@@ -14,6 +15,8 @@ class LocalSongLibrary implements SongLibrary
 
     public static function loadFromFile($file_path = '')
     {
+      var_dump($_SESSION['username']);
+
       if($file_path == '')
         $file_path = __SITE_PATH.'/assets/library/'.from_camel_case(get_called_class()).'.txt';
 
@@ -160,8 +163,9 @@ class LocalSongLibrary implements SongLibrary
       if(empty($this->file))
         return false;
 
-      echo "filepath: ".$file;
+
       $file = fopen($this->file, 'w+');
+      //echo "filepath: ".$this->file;
       fwrite($file, serialize($this));
       fclose($file);
     }

@@ -23,9 +23,9 @@ abstract class Controller {
 
   public function redirect($controller, $action, $args)
   {
-    $uri = explode('?', $_SERVER['URI_REQUEST'])[0];
+    $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
 
-    var_dump("Location: http://$_SERVER[HTTP_HOST]/{$uri}?controller={$controller}&action={$action}");
-    header("Location: http://$_SERVER[HTTP_HOST]/{$uri}?controller={$controller}&action={$action}");
+    var_dump("Location: http://$_SERVER[HTTP_HOST]{$uri}?controller={$controller}&action={$action}");
+    header("Location: http://$_SERVER[HTTP_HOST]{$uri}?controller={$controller}&action={$action}");
   }
 }
