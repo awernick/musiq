@@ -40,10 +40,8 @@ class Router
   }
 
   /**
-   *
    * Loads the specified controller
    * and routes to the desired action.
-   *
    */
   public function loader()
   {
@@ -86,7 +84,7 @@ class Router
     }
 
 
-
+    /* Route to index if controller cannot call the action */
     if(is_callable(array($controller, $this->action)) == false)
     {
       $action = 'index';
@@ -97,6 +95,7 @@ class Router
       $action = $this->action;
     }
 
+    /* Call the controller's action */
     $controller->$action();
 
   }

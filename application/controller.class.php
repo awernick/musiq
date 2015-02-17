@@ -21,6 +21,12 @@ abstract class Controller {
    */
   abstract function index();
 
+  /**
+   * Redirects to the specified controller and action
+   * @param  $controller        controller name
+   * @param  $action            action name
+   * @param  $args              arguments for the action(not implemented)  
+   */
   public function redirect($controller, $action, $args)
   {
     $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
